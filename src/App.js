@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import styles from "./app.module.css"
 
 function App() {
   const [data, setData] = useState([
@@ -27,18 +28,25 @@ function App() {
 
   return (
     <div>
-      <h1>Date and Views Table</h1>
-      <button onClick={sortByDate}>Sort by Date</button>
-      <button onClick={sortByViews}>Sort by Views</button>
-      <table>
+      <div className={styles.header}>
+      <h1 >Date and Views Table</h1>
+      </div>
+      
+      <div className={styles.btn}>
+         <button className={styles.btnStyl} onClick={sortByDate}>Sort by Date</button>
+         <button className={styles.btnStyl} onClick={sortByViews}>Sort by Views</button>
+      </div>
+
+     <div className={styles.tableHeading}>
+     <table className={styles.tableCard}>
         <thead>
-          <tr>
+          <tr className={styles.tr}>
             <th>Date</th>
             <th>Views</th>
             <th>Article</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody className={styles.table}>
           {data.map((item, index) => (
             <tr key={index}>
               <td>{item.date}</td>
@@ -48,6 +56,8 @@ function App() {
           ))}
         </tbody>
       </table>
+     </div>
+      
     </div>
   );
 }
